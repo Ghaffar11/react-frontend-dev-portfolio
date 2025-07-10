@@ -18,9 +18,6 @@ at GitHub. Check live preview(link below).
 
 <h3>:eye_speech_bubble: Live demo</h3>
 
-Check live demonstration <a href="https://dorota1997.github.io/react-frontend-dev-portfolio/"><strong>here</strong></a>
-
-<img width="100%" src="https://github.com/Dorota1997/react-frontend-dev-portfolio/blob/images/images/react_portfolio_about.png" alt="react frontend dev portfolio preview"/>
 
 <h3>:books: Getting started</h3>
 
@@ -28,17 +25,6 @@ Check live demonstration <a href="https://dorota1997.github.io/react-frontend-de
 2. Install required dependencies with `npm install`.
 3. Remove `homepage` entirely from `package.json` or set it to single dot. 
 
-```
-// package.json
-{
-  "name": "react-frontend-dev-portfolio",
-  "homepage": "https://dorota1997.github.io/react-frontend-dev-portfolio/",   <-- remove/edit this
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-  ...
-}
-```
 
 4. `npm start` project and customize it.
 5. Deploy on github-pages using `npm run deploy` command.
@@ -89,7 +75,6 @@ homepage property or json data won't load.
 </pre>
 </details>
 <details>
-<summary>[ 30.11.2020, contributor: <a href="https://github.com/dorota1997">@dorota1997</a> ]</summary>
 <pre>
 - updated readme section
 - fixed problem of json files not being read
