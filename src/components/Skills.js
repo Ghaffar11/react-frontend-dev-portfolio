@@ -1,44 +1,31 @@
-import React, { Component } from "react";
+import React from "react";
 
-class Skills extends Component {
-  render() {
-    if (this.props.sharedSkills && this.props.resumeBasicInfo) {
-      var sectionName = this.props.resumeBasicInfo.section_name.skills;
-      var skills = this.props.sharedSkills.icons.map(function (skills, i) {
-        return (
-          <li className="list-inline-item mx-3" key={i}>
-            <span>
-              <div className="text-center skills-tile">
-                <i className={skills.class} style={{ fontSize: "220%" }}>
-                  <p
-                    className="text-center"
-                    style={{ fontSize: "30%", marginTop: "4px" }}
-                  >
-                    {skills.name}
-                  </p>
-                </i>
-              </div>
-            </span>
-          </li>
-        );
-      });
-    }
+const Skills = React.forwardRef((props, ref) => {
+  if (!props.sharedSkills || !props.resumeBasicInfo) return null;
 
-    return (
-      <section id="skills">
+  const sectionName = props.resumeBasicInfo.section_name.skills;
+
+  const skills = props.sharedSkills.icons.map((skill, i) => (
+    <div className="skill-poster-card" key={i}>
+      <div className="poster-image">
+        <i className={skill.class}></i>
+      </div>
+      <div className="poster-info">
+        <h4 className="poster-title">{skill.name}</h4>
+        {skill.level && <p className="poster-description">{skill.level}</p>}
+      </div>
+    </div>
+  ));
+
+  return (
+    <section id="skills" ref={ref} className="section-active-border">
+      <div className="col-md-12">
         <div className="col-md-12">
-          <div className="col-md-12">
-            <h1 className="section-title">
-              <span className="text-white">{sectionName}</span>
-            </h1>
-          </div>
-          <div className="col-md-12 text-center">
-            <ul className="list-inline mx-auto skill-icon">{skills}</ul>
-          </div>
+          <div className="skills-grid">{skills}</div>
         </div>
-      </section>
-    );
-  }
-}
+      </div>
+    </section>
+  );
+});
 
 export default Skills;

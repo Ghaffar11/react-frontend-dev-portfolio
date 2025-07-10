@@ -1,0 +1,52 @@
+.splash-screen {
+  position: fixed;
+  inset: 0;
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  color: red;
+  font-family: "Bebas Neue", sans-serif;
+  transition: opacity 1s ease;
+}
+
+.splash-screen.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.name-expand-row {
+  display: flex;
+  gap: 4rem;
+  font-size: 4rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.name-segment {
+  display: flex;
+  align-items: baseline;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.name-segment .short {
+  transition: all 0.6s ease;
+  margin-right: 0.2rem;
+}
+
+.name-segment .full {
+  opacity: 0;
+  width: 0;
+  overflow: hidden;
+  display: inline-block;
+  transform: translateX(-10px);
+  transition: all 0.6s ease-in-out;
+}
+
+/* When expanded, reveal the full name */
+.name-expand-row.expanded .name-segment .full {
+  opacity: 1;
+  width: auto;
+  transform: translateX(0);
+}

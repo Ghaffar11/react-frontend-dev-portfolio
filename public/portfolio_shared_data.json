@@ -1,27 +1,27 @@
 {
     "basic_info": {
-      "name": "Davina Griss",
-      "titles": [ "Front-end Developer", "Senior Data Engineer", "Dev Team lead", "Mobile App Developer" ],
-      "social": [
-        {
-          "name": "github",
-          "url": "https://github.com",
-          "class": "fab fa-github"
-        },
-        {
-          "name": "instagram",
-          "url": "https://www.instagram.com",
-          "class": "fab fa-instagram"
-        }
-      ],
+      "name": "Mohammed Abdul Ghaffar",
+
+     "social": [
+          {
+            "name": "github",
+            "url": "https://github.com/yourusername",
+            "class": "fab fa-github"
+          },
+          {
+            "name": "linkedin",
+            "url": "https://linkedin.com/in/yourlinkedinid",
+            "class": "fab fa-linkedin"
+          }
+        ],
       "image": "myProfile.jpg"
     },
     "skills": {
       "icons": [
         {
-          "name": "HTML 5",
-          "class": "devicon-html5-plain",
-          "level": "95"
+          "name": "React",
+          "class": "devicon-react-original",
+          "level": "Built UIs with Hooks"
         },
         {
           "name": "CSS 3",

@@ -7,47 +7,38 @@ import About from "./components/About";
 import Experience from "./components/Experience";
 import Projects from "./components/Projects";
 import Skills from "./components/Skills";
+import SplashScreen from "./components/SplashScreen";
+
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 class App extends Component {
-
   constructor(props) {
-    super();
+    super(props);
     this.state = {
-      foo: "bar",
       resumeData: {},
       sharedData: {},
+      activeSection: null,
+      showSplash: true,
     };
-  }
 
-  applyPickedLanguage(pickedLanguage, oppositeLangIconId) {
-    this.swapCurrentlyActiveLanguage(oppositeLangIconId);
-    document.documentElement.lang = pickedLanguage;
-    var resumePath =
-      document.documentElement.lang === window.$primaryLanguage
-        ? `res_primaryLanguage.json`
-        : `res_secondaryLanguage.json`;
-    this.loadResumeFromPath(resumePath);
-  }
+    this.aboutRef = React.createRef();
+    this.projectsRef = React.createRef();
+    this.skillsRef = React.createRef();
+    this.experienceRef = React.createRef();
 
-  swapCurrentlyActiveLanguage(oppositeLangIconId) {
-    var pickedLangIconId =
-      oppositeLangIconId === window.$primaryLanguageIconId
-        ? window.$secondaryLanguageIconId
-        : window.$primaryLanguageIconId;
-    document
-      .getElementById(oppositeLangIconId)
-      .removeAttribute("filter", "brightness(40%)");
-    document
-      .getElementById(pickedLangIconId)
-      .setAttribute("filter", "brightness(40%)");
+    this.loadResumeFromPath = this.loadResumeFromPath.bind(this);
+    this.loadSharedData = this.loadSharedData.bind(this);
+    this.handleSectionClick = this.handleSectionClick.bind(this);
   }
 
   componentDidMount() {
     this.loadSharedData();
-    this.applyPickedLanguage(
-      window.$primaryLanguage,
-      window.$secondaryLanguageIconId
-    );
+    this.loadResumeFromPath("res_primaryLanguage.json");
+
+    setTimeout(() => {
+      this.setState({ showSplash: false });
+    }, 3000);
   }
 
   loadResumeFromPath(path) {
@@ -59,81 +50,137 @@ class App extends Component {
         this.setState({ resumeData: data });
       }.bind(this),
       error: function (xhr, status, err) {
-        alert(err);
+        console.error("Error loading resume data:", err);
       },
     });
   }
 
   loadSharedData() {
     $.ajax({
-      url: `portfolio_shared_data.json`,
+      url: "portfolio_shared_data.json",
       dataType: "json",
       cache: false,
       success: function (data) {
         this.setState({ sharedData: data });
-        document.title = `${this.state.sharedData.basic_info.name}`;
+        document.title = data?.basic_info?.name || "Portfolio";
       }.bind(this),
       error: function (xhr, status, err) {
-        alert(err);
+        console.error("Error loading shared data:", err);
       },
     });
   }
 
+  handleSectionClick(sectionKey) {
+    this.setState(
+      (prevState) => ({
+        activeSection: prevState.activeSection === sectionKey ? null : sectionKey,
+      }),
+      () => {
+        const sectionRefMap = {
+          about: this.aboutRef,
+          projects: this.projectsRef,
+          skills: this.skillsRef,
+          experience: this.experienceRef,
+        };
+        const sectionRef = sectionRefMap[sectionKey];
+        if (sectionRef?.current) {
+          sectionRef.current.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }
+      }
+    );
+  }
+
   render() {
+    const { resumeData, sharedData, activeSection, showSplash } = this.state;
+
+    if (showSplash) return <SplashScreen />;
+
+    const aboutSectionName =
+      resumeData.basic_info?.section_name?.about || "About Me";
+    const projectsSectionName =
+      resumeData.basic_info?.section_name?.projects || "Projects";
+    const skillsSectionName =
+      resumeData.basic_info?.section_name?.skills || "Skills";
+    const experienceSectionName =
+      resumeData.basic_info?.section_name?.experience || "Experience";
+
     return (
       <div>
-        <Header sharedData={this.state.sharedData.basic_info} />
-        <div className="col-md-12 mx-auto text-center language">
-          <div
-            onClick={() =>
-              this.applyPickedLanguage(
-                window.$primaryLanguage,
-                window.$secondaryLanguageIconId
-              )
-            }
-            style={{ display: "inline" }}
-          >
-            <span
-              className="iconify language-icon mr-5"
-              data-icon="twemoji-flag-for-flag-united-kingdom"
-              data-inline="false"
-              id={window.$primaryLanguageIconId}
-            ></span>
+        <div className="main-content-fade-in">
+          <Header sharedData={sharedData.basic_info} />
+
+          <div className="section-navigator">
+            <h1
+              className="section-title"
+              onClick={() => this.handleSectionClick("about")}
+            >
+              <span>{aboutSectionName}</span>
+            </h1>
+            <h1
+              className="section-title"
+              onClick={() => this.handleSectionClick("projects")}
+            >
+              <span>{projectsSectionName}</span>
+            </h1>
+            <h1
+              className="section-title"
+              onClick={() => this.handleSectionClick("skills")}
+            >
+              <span>{skillsSectionName}</span>
+            </h1>
+            <h1
+              className="section-title"
+              onClick={() => this.handleSectionClick("experience")}
+            >
+              <span>{experienceSectionName}</span>
+            </h1>
           </div>
-          <div
-            onClick={() =>
-              this.applyPickedLanguage(
-                window.$secondaryLanguage,
-                window.$primaryLanguageIconId
-              )
-            }
-            style={{ display: "inline" }}
-          >
-            <span
-              className="iconify language-icon"
-              data-icon="twemoji-flag-for-flag-poland"
-              data-inline="false"
-              id={window.$secondaryLanguageIconId}
-            ></span>
-          </div>
+
+          {activeSection === "about" && (
+            <div className="section-fade-slide-in">
+              <About
+                ref={this.aboutRef}
+                resumeBasicInfo={resumeData.basic_info}
+                sharedBasicInfo={sharedData.basic_info}
+              />
+            </div>
+          )}
+
+          {activeSection === "projects" && (
+            <div className="section-fade-slide-in">
+              <Projects
+                ref={this.projectsRef}
+                resumeProjects={resumeData.projects}
+                resumeBasicInfo={resumeData.basic_info}
+              />
+            </div>
+          )}
+
+          {activeSection === "skills" && (
+            <div className="section-fade-slide-in">
+              <Skills
+                ref={this.skillsRef}
+                sharedSkills={sharedData.skills}
+                resumeBasicInfo={resumeData.basic_info}
+              />
+            </div>
+          )}
+
+          {activeSection === "experience" && (
+            <div className="section-fade-slide-in">
+              <Experience
+                ref={this.experienceRef}
+                resumeExperience={resumeData.experience}
+                resumeBasicInfo={resumeData.basic_info}
+              />
+            </div>
+          )}
+
+          <Footer sharedBasicInfo={sharedData.basic_info} />
         </div>
-        <About
-          resumeBasicInfo={this.state.resumeData.basic_info}
-          sharedBasicInfo={this.state.sharedData.basic_info}
-        />
-        <Projects
-          resumeProjects={this.state.resumeData.projects}
-          resumeBasicInfo={this.state.resumeData.basic_info}
-        />
-        <Skills
-          sharedSkills={this.state.sharedData.skills}
-          resumeBasicInfo={this.state.resumeData.basic_info}
-        />
-        <Experience
-          resumeExperience={this.state.resumeData.experience}
-          resumeBasicInfo={this.state.resumeData.basic_info}
-        />
-        <Footer sharedBasicInfo={this.state.sharedData.basic_info} />
       </div>
     );
   }

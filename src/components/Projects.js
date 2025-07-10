@@ -1,70 +1,79 @@
-import React, { Component } from "react";
+import React from "react";
+import Slider from "react-slick";
 import ProjectDetailsModal from "./ProjectDetailsModal";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
-class Projects extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      deps: {},
-      detailsModalShow: false,
-    };
-  }
+const Projects = React.forwardRef((props, ref) => {
+  const [detailsModalShow, setDetailsModalShow] = React.useState(false);
+  const [deps, setDeps] = React.useState({});
 
-  render() {
-    let detailsModalShow = (data) => {
-      this.setState({ detailsModalShow: true, deps: data });
-    };
+  const detailsModalShowHandler = (project) => {
+    const modalImage = project.modalImage?.[0];
+    const fallbackImage =
+      project.images?.[0] || project.image?.[0] || "";
 
-    let detailsModalClose = () => this.setState({ detailsModalShow: false });
-    if (this.props.resumeProjects && this.props.resumeBasicInfo) {
-      var sectionName = this.props.resumeBasicInfo.section_name.projects;
-      var projects = this.props.resumeProjects.map(function (projects) {
-        return (
-          <div
-            className="col-sm-12 col-md-6 col-lg-4"
-            key={projects.title}
-            style={{ cursor: "pointer" }}
-          >
-            <span className="portfolio-item d-block">
-              <div className="foto" onClick={() => detailsModalShow(projects)}>
-                <div>
-                  <img
-                    src={projects.images[0]}
-                    alt="projectImages"
-                    height="230"
-                    style={{marginBottom: 0, paddingBottom: 0, position: 'relative'}}
-                  />
-                  <span className="project-date">{projects.startDate}</span>
-                  <br />
-                  <p className="project-title-settings mt-3">
-                    {projects.title}
-                  </p>
-                </div>
-              </div>
-            </span>
-          </div>
-        );
-      });
-    }
+    setDeps({
+      ...project,
+      imageToShow: modalImage || fallbackImage
+    });
+    setDetailsModalShow(true);
+  };
 
-    return (
-      <section id="portfolio">
-        <div className="col-md-12">
-          <h1 className="section-title" style={{ color: "black" }}>
-            <span>{sectionName}</span>
-          </h1>
-          <div className="col-md-12 mx-auto">
-            <div className="row mx-auto">{projects}</div>
-          </div>
-          <ProjectDetailsModal
-            show={this.state.detailsModalShow}
-            onHide={detailsModalClose}
-            data={this.state.deps}
-          />
+  const detailsModalClose = () => setDetailsModalShow(false);
+
+  if (!props.resumeProjects || !props.resumeBasicInfo) return null;
+
+  const sectionClasses = "section-active-border";
+
+  const projects = props.resumeProjects.map((project) => (
+<div key={project.title} className="project-slide-wrapper">
+  <div className="project-card-wrapper">
+    <div
+      className="netflix-project-poster"
+      onClick={() => detailsModalShowHandler(project)}
+    >
+      <img
+        src={project.images?.[0] || project.image?.[0]}
+        alt={project.title}
+        className="project-image"
+      />
+      <div className="project-overlay">
+        <h3 className="project-title">{project.title}</h3>
+        <p className="project-description">{project.description}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+  ));
+
+  const settings = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    responsive: [
+      { breakpoint: 1024, settings: { slidesToShow: 2 } },
+      { breakpoint: 600, settings: { slidesToShow: 1 } },
+    ],
+  };
+
+  return (
+    <section id="portfolio" ref={ref} className={sectionClasses}>
+      <div className="col-md-12">
+        <div className="col-md-12 mx-auto">
+          <Slider {...settings}>{projects}</Slider>
         </div>
-      </section>
-    );
-  }
-}
+        <ProjectDetailsModal
+          show={detailsModalShow}
+          onHide={detailsModalClose}
+          data={deps}
+        />
+      </div>
+    </section>
+  );
+});
 
 export default Projects;

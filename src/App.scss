@@ -1,428 +1,1087 @@
-@import '../src/scss/themes/theme-dark.scss';
-@import '../src/scss/themes/theme-light.scss';
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;300&display=swap');
+  @import '../src/scss/themes/theme-dark.scss';
+  @import '../src/scss/themes/theme-light.scss';
+  // NEW FONT IMPORTS FOR NETFLIX THEME TYPOGRAPHY
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700&display=swap');
+  // Updated Google Fonts import for a more modern font like Roboto (keep if used elsewhere, but Montserrat will override for body)
+  // @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+  // Optional: If not using in index.html, import Press Start 2P here (for intro animation only)
+  // @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-html {
-	font-size: 62.5%;
-	-webkit-font-smoothing: antialiased;
-	margin: 0;
-	padding: 0;
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-size: 62.5%;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    padding: 0;
+    // Default font for the entire application (Body: Clean sans-serif)
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  body {
+    // Ensure body uses theme variables for background and text color
+    background-color: var(--background-primary) !important;
+    color: var(--text-primary);
+    font-family: 'Montserrat', sans-serif; // Ensure body uses this
+  }
+
+
+  .aligner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .title-container {
+    height: 50px;
+  }
+
+  .title-styles {
+    font-family: 'Bebas Neue', cursive; // Headings font
+    font-size: 250%;
+  }
+
+  .header-icon {
+    height: 150px;
+    width: 150px;
+  }
+  /*
+  header {
+    position: relative;
+    height: 520px;
+    min-height: 450px;
+    width: 100%;
+    background-size: cover;
+    -webkit-background-size: cover;
+    text-align: center;
+    overflow: hidden;
+    background-color: var(--header-background);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    padding-top: 150px;
+    padding-bottom: 0;
+  }*/
+
+  header {
+    background: linear-gradient(to top, rgba(20,20,20,0.8), rgba(20,20,20,0.4)),
+                url('/images/netflix-bg.jpg') center center / cover no-repeat;
+    text-align: center;
+    padding-top: 120px;
+  }
+
+
+
+  .language-icon {
+    font-size: 50px;
+    cursor: pointer;
+  }
+
+  .project-date {
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif; // Ensure body font for dates
+    padding: 8px 15px 2px 15px;
+    position: relative;
+    z-index: -500;
+    border-top: 5px solid var(--project-date-border);
+    border-radius: 0 0 5px 5px;
+    background-color: var(--project-date-background);
+    color: var(--text-primary);
+  }
+
+  .skills-tile {
+    background-color: var(--skills-tile-background);
+    padding: 10px 10px 5px 10px;
+    width: 100px;
+    margin: 5px 0 5px 0;
+    border-radius: 8px;
+  }
+
+  .language {
+    font-size: 25px;
+    background-color: var(--language-background);
+    padding-bottom: 10px;
+    padding-top: 80px;
+  }
+
+  header h1 {
+    font-size: 400%;
+    text-align: center;
+    font-weight: 700 !important; // Ensure bold
+    color: var(--header-h1-color);
+    font-family: 'Bebas Neue', cursive; // Headings font
+    text-transform: uppercase; // Already there, ensures all caps
+    margin: 0 auto 18px auto;
+    width: 100%;
+  }
+
+  .slider-image {
+    border-radius: 12px;
+  }
+
+  .slider-tab {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
+  .slider-iconfiy {
+    font-size: 1.1rem;
+  }
+
+  .styles_typicalWrapper__1_Uvh::after {
+    cursor: none !important;
+    display: none;
+  }
+
+  #about {
+    background: var(--about-background);
+    overflow: hidden;
+  }
+
+  #about h1 {
+    padding-top: 5%;
+    font: 18px/24px 'Bebas Neue', cursive; // Headings font
+    font-weight: 700 !important; // Ensure bold
+    text-transform: uppercase; // Already there, ensures all caps
+    letter-spacing: 3px;
+    color: var(--about-h1-color);
+    text-align: center;
+  }
+
+  .foto img {
+    display: block;
+    width: 100%;
+  }
+
+  .foto div {
+    background: var(--foto-div-background);
+    border: var(--foto-div-border);
+    display: inline-block;
+    margin: 0 auto 5% auto;
+    padding: 10px 10px 5px;
+    text-align: center;
+    text-decoration: none;
+    -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, .3);
+    -moz-box-shadow: 0 4px 6px rgba(0, 0, 0, .3);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, .3);
+    -webkit-transition: all .20s linear;
+    -moz-transition: all .20s linear;
+    transition: all .20s linear;
+    z-index: 0;
+    position: relative;
+  }
+
+  .foto div:after {
+    color: var(--foto-div-after-color);
+    font-size: 25px;
+    content: attr(title);
+    position: relative;
+    top: 15px;
+  }
+
+  .foto div:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px var(--accent-primary);
+    transition: all 0.3s ease;
+  }
+
+
+  .project-title-settings {
+    margin-top: 5%;
+    font: 18px/24px 'Bebas Neue', cursive; // Headings font for project titles
+    font-weight: 700 !important; // Ensure bold
+    text-transform: uppercase; // All caps
+    letter-spacing: 3px;
+    color: var(--project-title-settings-color);
+    text-align: center;
+  }
+
+  .polaroid img {
+    display: block;
+    max-width: 200px;
+  }
+
+  .polaroid span {
+    background: var(--polaroid-span-background);
+    border: var(--polaroid-span-border);
+    display: inline-block;
+    margin: 55px 75px 30px;
+    padding: 15px 15px 30px;
+    text-align: center;
+    text-decoration: none;
+    -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, .3);
+    -moz-box-shadow: 0 4px 6px rgba(0, 0, 0, .3);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, .3);
+    -webkit-transition: all .20s linear;
+    -moz-transition: all .20s linear;
+    transition: all .20s linear;
+    z-index: 0;
+    position: relative;
+  }
+
+  .link-href {
+    color: var(--link-href-color);
+  }
+
+  .wave {
+    font-size: 160%;
+  }
+
+  .font-trebuchet {
+    font-family: 'Montserrat', sans-serif; // Consistency with body font
+  }
+
+  #preview {
+    width: 500px;
+    background-color: var(--preview-background);
+    padding: 15px;
+    position: relative;
+    margin-bottom: 15%;
+  }
+
+  .center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #resume {
+    background: var(--resume-background);
+  }
+
+  .experience-icon {
+    font-size: 300%;
+    margin-top: 25%;
+    text-align: center;
+  }
+
+
+  .main-badge,
+  .experience-badge {
+    font-size: 12px !important;
+    border-radius: 12px !important;
+    padding: 5px 10px !important;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+  .vertical-timeline-element-date {
+    padding: 0 !important;
+    margin: 0 !important;
+    
+  }
+
+  @media only screen and (max-width: 1170px) {
+    .experience-icon {
+      font-size: 170%;
+      margin-top: 27%;
+      text-align: center;
+    }
+  }
+
+  .modal-inside .modal-content {
+    background-color: #141414;
+    color: white;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .bars {
+    width: 95%;
+    float: left;
+    padding: 0;
+    text-align: left;
+  }
+
+  .bars .skills {
+    margin-top: 36px;
+    list-style: none;
+  }
+
+  .bars li {
+    position: relative;
+    margin-bottom: 60px;
+    background: var(--bar-background);
+    height: 42px;
+    border-radius: 3px;
+  }
+
+  .bars li em {
+    font: 15px 'Montserrat', sans-serif; // Consistency with body font
+    color: var(--bar-li-em-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: normal;
+    position: relative;
+    top: -36px;
+  }
+
+  .bar-expand {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 0;
+    padding-right: 24px;
+    background: var(--bar-expand-background);
+    display: inline-block;
+    height: 42px;
+    line-height: 42px;
+    border-radius: 3px 0 0 3px;
+  }
+
+  .modal-close i {
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .modal-inside .fa-play {
+    animation: pulse 2s infinite ease-in-out;
+  }
+
+  .modal-close:hover i {
+    transform: scale(1.1);
+  }
+  .close-icon {
+    color: var(--close-icon-color);
+    font-weight: lighter !important;
+  }
+
+  .modal-description {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #ccc;
+    text-align: justify;
+  }
+  .awssld__next {
+    outline: none !important;
+  }
+
+  .awssld__prev {
+    outline: none !important;
+  }
+
+  .loader-bar-color {
+    color: var(--loader-bar-color) !important;
+  }
+
+  /* NEW: Styles for Main Content Sections with curved borders (now conditional) */
+  #about,
+  #portfolio,
+  #skills,
+  #resume {
+    background-color: var(--background-primary); /* Ensure section background is black */
+    overflow: hidden; /* Ensure content respects border-radius and avoid overflow */
+    // These border/margin/padding rules are moved to .section-active-border
+  }
+
+
+  #portfolio {
+    background: var(--portfolio-background); // Changed to use variable (full black)
+    padding-bottom: 5%;
+  }
+
+  .portfolio-item {
+    max-width: 100%;
+    margin-bottom: 15px;
+    text-align: center;
+    border: var(--portfolio-item-border);
+  }
+
+  .portfolio .portfolio-item .portfolio-item-caption {
+    -webkit-transition: all ease 0.5s;
+    -moz-transition: all ease 0.5s;
+    transition: all ease 0.5s;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+
+  .portfolio .portfolio-item .portfolio-item-caption:hover {
+    opacity: 1;
+  }
+
+  .portfolio .portfolio-item .portfolio-item-caption .portfolio-item-caption-content {
+    font-size: 1.5rem;
+  }
+
+  @media (min-width: 576px) {
+    .portfolio .closeButtonResponsive {
+      display: block;
+    }
+    .portfolio .portfolio-item {
+      margin-bottom: 30px;
+    }
+  }
+
+  #skills {
+    background: var(--skills-background);
+    min-height: 200px;
+    width: 100%;
+    overflow: hidden;
+    padding-bottom: 10%;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', cursive;
+    background-color: transparent;
+    border: 2px solid var(--accent-primary);
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+
+    &:hover {
+      background-color: var(--accent-primary);
+      color: #fff;
+      box-shadow: 0 0 10px var(--accent-primary);
+    }
+  }
+
+  .skill-icon {
+    font-size: 180%;
+    color: var(--skill-icon-color);
+    text-align: center;
+    position: relative;
+  }
+
+  footer {
+    background: var(--footer-background);
+    min-height: 100px;
+    width: 100%;
+    overflow: hidden;
+    font-size: 14px;
+    color: var(--footer-text-color);
+    position: relative;
+    text-align: center;
+  }
+
+  footer a,
+  footer a:visited {
+    color: var(--footer-link-color);
+  }
+
+  footer a:hover,
+  footer a:focus {
+    color: var(--accent-primary);
+  }
+
+  .social-links {
+    margin-top: 50px;
+    font-size: 22px;  
+  }
+
+  /* --- Added/Modified styles for .card and .card-header to force dark background and red stroke --- */
+  .card {
+    background-color: var(--background-secondary) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--stroke-color) !important;
+    background-clip: border-box !important;
+    border-radius: 8px !important;
+    overflow: hidden;
+    
+    /* Inherited properties from Bootstrap's default .card that are often helpful */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+  }
+
+  .card-header {
+    background-color: var(--background-tertiary) !important;
+    border-bottom: 1px solid var(--stroke-color) !important;
+    color: var(--text-primary) !important;
+    padding: 10px 15px;
+  }
+
+  .card-body {
+    color: var(--text-primary) !important;
+    /* Existing inline styles for height, fontSize, lineHeight are defined in About.js.
+    You might want to move these into App.scss or remove them if they conflict with your desired look. */
+    /* Example if moving to App.scss:
+    height: auto;
+    font-size: 1.32em; // Corresponds to 132%
+    line-height: 200%;
+    */
+  }
+
+  /* --- New rules for collapsible content (added from previous step) --- */
+  .collapsible-content {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: max-height 0.7s ease-in-out, opacity 0.7s ease-in-out;
+  }
+
+  .collapsible-content.is-visible {
+    max-height: 1000px;
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  /* Add to App.scss for horizontal section titles */
+  .section-navigator {
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    justify-content: center; /* Centers the buttons */
+    gap: 20px; /* Space between buttons */
+    padding: 20px; /* Padding around the navigation */
+    background-color: var(--background-primary); /* Match main background */
+    // REMOVED: border-bottom: 1px solid var(--stroke-color); /* Separator removed */
+    margin-bottom: 20px; /* Space below the navigation */
+
+    .section-title { /* Apply specific styles for buttons within this navigator */
+      /* Inherits general section-title styles, but you can override specific ones here if needed */
+      font-size: 16px !important; /* Make font smaller for buttons */
+      padding: 8px 15px !important; /* Adjust padding for button size */
+      margin: 0 !important; /* Remove margin to control spacing with gap */
+      cursor: pointer;
+
+      // Optional: Hover effect for buttons
+      &:hover {
+        background-color: var(--background-secondary) !important;
+        box-shadow: 0 0 10px var(--accent-primary);
+      }
+    }
+  }
+
+  @keyframes logoFadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+
+  /* Main content fade-in (as defined before) */
+  .main-content-fade-in {
+    opacity: 0; /* Start hidden */
+    animation: fadeInContent 1s ease-out 0.2s forwards; /* 1s duration, starts 0.2s after animation screen removed */
+  }
+
+  @keyframes fadeInContent {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+
+  /* NEW: Header Section Animations */
+
+  /* Looping Animation for Icon */
+  .animated-header-icon {
+    animation: iconFlicker 1.5s infinite alternate ease-in-out; /* Subtle flicker */
+    transform-origin: center center; /* Ensure flicker around center */
+    opacity: 0.8; /* Start slightly dim */
+  }
+
+  @keyframes iconFlicker {
+    0% { transform: scale(1); opacity: 0.8; text-shadow: 0 0 5px rgba(255, 0, 0, 0.5); }
+    50% { transform: scale(1.02); opacity: 0.9; text-shadow: 0 0 10px var(--accent-primary); }
+    100% { transform: scale(1); opacity: 0.8; text-shadow: 0 0 5px rgba(255, 0, 0, 0.5); }
+  }
+
+  /* Fade-in Intro for Header Text Content (Name, Title, Toggle) */
+  .header-content-intro {
+    opacity: 0; /* Start hidden */
+    animation: headerContentFadeIn 1.5s ease-out 0.5s forwards; /* 1.5s duration, starts 0.5s after page load */
+  } 
+
+  @keyframes headerContentFadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(20px); /* Start slightly below */
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0); /* Move to final position */
+    }
+  } 
+
+  @keyframes netflixTitleIntro {
+    0% {
+      opacity: 0;
+      transform: scale(0.92);
+      letter-spacing: 5px;
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+      letter-spacing: 1px;
+    }
+  }
+
+  .netflix-title {
+    animation: netflixTitleIntro 1.2s ease-out forwards;
+    opacity: 0; // Initial state before animation
+  }
+
+  /* Netflix-Themed Experience Cards */
+  .experience-card {
+    background: var(--background-secondary) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 0 15px rgba(229, 9, 20, 0.2) !important;
+    transition: transform 0.3s ease-in-out;
+    padding: 0 !important;
+  }
+
+  .experience-card-content {
+    padding: 20px 25px;
+    background-color: rgba(28, 28, 28, 0.95);
+    border-left: 4px solid var(--accent-primary); /* Replace inner border-red */
+    border-radius: 8px;
+    color: var(--text-primary);
+    box-shadow: 0 0 12px rgba(229, 9, 20, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .experience-card-content:hover {
+    transform: scale(1.015);
+    box-shadow: 0 0 22px rgba(229, 9, 20, 0.4);
+  }
+
+
+  .experience-title {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 2.4rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+
+  .experience-subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: #ccc;
+  }
+
+
+  .experience-tags,
+  .experience-tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 12px 0;
+  }
+
+
+  .vertical-timeline-element--work {
+    margin: 0 0 60px;
+  }
+
+  .experience-poster {
+    width: 80px;
+    height: 80px;
+    border-radius: 6px;
+    margin-right: 15px;
+    object-fit: cover;
+    box-shadow: 0 0 8px rgba(229, 9, 20, 0.3);
+  }
+
+
+  .vertical-timeline::before {
+    background: linear-gradient(to bottom, #e50914, #9b0000);
+    box-shadow: 0 0 8px rgba(229, 9, 20, 0.4);
+  }
+
+  .netflix-experience-card {
+    background-color: #1c1c1c;
+    color: var(--text-primary);
+    border-left: 4px solid var(--accent-primary);
+    padding: 20px 25px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(229, 9, 20, 0.25);
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .netflix-role-title {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 5px;
+  }
+
+  .netflix-role-title em {
+    font-style: italic;
+    color: #e50914;
+  }
+
+  .netflix-studio,
+  .netflix-years {
+    font-size: 1.3rem;
+    color: #aaa;
+    margin-bottom: 5px;
+  }
+
+  .netflix-synopsis {
+    font-size: 1.4rem;
+    color: #ddd;
+    margin: 15px 0 10px;
+    line-height: 1.6;
+  }
+
+  .netflix-genres {
+    font-size: 1.2rem;
+    color: #ccc;
+  }
+
+
+  /* === Netflix-style Skill Poster Cards === */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    justify-items: center;
+  }
+
+  .skill-poster-card {
+    background-color: #1c1c1c;
+    color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(229, 9, 20, 0.15);
+    text-align: center;
+    padding: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    width: 140px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .skill-poster-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 22px rgba(229, 9, 20, 0.4);
+  }
+
+  .poster-image i {
+    font-size: 48px;
+    color: #e50914;
+    margin-bottom: 10px;
+  }
+
+  .poster-title {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 1.4rem;
+    margin-bottom: 4px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .poster-description {
+    font-size: 0.9rem;
+    color: #ccc;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .skill-poster-card:hover .poster-description {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .netflix-project-poster {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent; // Remove background if not needed
+    border: none; // ❌ Remove border from here
+    width: fit-content;
+    margin: 0 auto;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  .netflix-project-poster {
+    //border: 2px solid red;
+  }
+
+  /*.netflix-project-poster:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(229, 9, 20, 0.5);
+  }*/
+
+  .project-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This CROPS the image */
+    object-position: center;
+    display: block;
+    border-radius: 12px;
+  }
+
+
+  .project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(20, 20, 20, 0.92);
+    opacity: 0;
+    color: #fff;
+    padding: 20px 15px;
+    transition: opacity 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+      pointer-events: none;
+  }
+
+  .netflix-project-poster:hover {
+    transform: scale(1.05) translateY(-5px);
+  }
+  .netflix-project-poster:hover .project-overlay {
+    opacity: 1;
+  }
+
+  .play-icon {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+    color: #e50914;
+  }
+
+  .project-title {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 1.6rem;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+  }
+
+  .project-description {
+    font-size: 0.9rem;
+    color: #ccc;
+  }
+
+  .project-slide-wrapper {
+    padding: 16px; // ⬅️ Adds space around each card
+    overflow: visible;
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(1); opacity: 0.85; }
+    50% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); opacity: 0.85; }
+  }
+
+  .project-image-wrapper {
+    position: relative;
+  }
+
+  .project-hero-image {
+    width: 100%;
+    max-height: 450px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .project-image-wrapper::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 40%;
+    width: 100%;
+    background: linear-gradient(to top, rgba(20, 20, 20, 0.9), transparent);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .project-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: white;
+    margin-bottom: 0.5rem;
+  }
+
+  .project-description {
+    font-size: 1rem;
+    color: #b3b3b3;
+    max-width: 600px;
+    line-height: 1.6;
+  }
+
+  .project-tag {
+    display: inline-block;
+    background-color: #e50914;
+    color: white;
+    padding: 0.3rem 0.7rem;
+    margin-right: 0.4rem;
+    margin-bottom: 0.4rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+
+  #experience {
+    background-color: rgba(255, 0, 0, 0.1);
+  }
+
+
+  .streaming-tagline {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #e50914; // Classic Netflix red
+    text-transform: uppercase;
+    margin-top: 20px;
+    letter-spacing: 1px;
+    animation: headerContentFadeIn 1.5s ease-out 0.5s forwards;
+  }
+
+  .netflix-tagline {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 3rem;
+    text-transform: uppercase;
+    color: #e50914;
+    letter-spacing: 2.5px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+    animation: fadeInUp 1.2s ease-out;
+    margin-top: 20px;
+  }
+
+  .streaming-banner {
+    background-color: rgba(229, 9, 20, 0.1);
+    border: 2px solid #e50914;
+    color: #e50914;
+    font-size: 2.2rem;
+    padding: 12px 20px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-family: 'Bebas Neue', cursive;
+    display: inline-block;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(229, 9, 20, 0.2);
+  }
+
+
+  .netflix-button {
+    display: inline-block;
+    padding: 12px 24px;
+    border: 2px solid red;
+    color: red;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background-color: transparent;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-decoration: none;
+  }
+
+  .netflix-button:hover {
+    background-color: red;
+    color: black;
+  }
+
+
+  .resume-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .btn-resume,
+  .btn-contact {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 48px;
+    font-size: 1.3rem;       // Larger text
+    font-weight: 600;
+    color: #000 !important;
+    background-color: #ff2e2e !important;
+    border: 2px solid #ff2e2e;
+    border-radius: 10px;
+    min-width: 220px;        // Wider buttons
+    transition: all 0.3s ease;
+    text-decoration: none;
+
+    .iconify {
+      font-size: 1.5rem;
+      margin-right: 12px;
+      color: #000 !important;
+    }
+
+    &:hover {
+      transform: scale(1.06);
+      opacity: 0.9;
+    }
+  }
+
+  .button-group {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+
+  .iconify {
+    transition: transform 0.2s ease, filter 0.3s ease;
+  }
+
+  .iconify:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 6px #61dafb);
+  }
+
+
+  .tech-icon {
+    transition: transform 0.3s ease, filter 0.3s ease;
+    cursor: pointer;
+  }
+
+  .tech-icon:hover {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 10px #61dafb);
+  }
+
+  .project-card-wrapper {
+    padding: 0; // No extra spacing around the image
+  }
+
+  .project-image {
+    width: 220px; // fixed width if needed
+    height: auto;
+    border: 2px solid red;
+    border-radius: 12px;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .section-fade-slide-in {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeSlideIn 0.6s ease-out forwards;
 }
 
-.aligner {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-.title-container {
-	height: 50px;
-}
-
-.title-styles {
-	font-family: 'Raleway', sans-serif;
-	font-size: 250%;
-}
-
-.header-icon {
-	height: 150px;
-	width: 150px;
-}
-
-header {
-	position: relative;
-	height: 520px;
-	min-height: 450px;
-	width: 100%;
-	background-size: cover;
-	-webkit-background-size: cover;
-	text-align: center;
-	overflow: hidden;
-	background-color: #e9d5a1;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-	padding-top: 150px;
-	padding-bottom: 0;
-}
-
-.language-icon {
-	font-size: 50px;
-	cursor: pointer;
-}
-
-.project-date {
-	font-size: 16px;
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-	padding: 8px 15px 2px 15px;
-	position: relative;
-	z-index: -500;
-	border-top: 5px solid #696969;
-	border-radius: 0 0 5px 5px;
-	background-color: #696969;
-	color: white;
-}
-
-.skills-tile {
-	background-color: transparentize(#F8F5F4, 0.95);
-	padding: 10px 10px 5px 10px;
-	width: 100px;
-	margin: 5px 0 5px 0;
-	border-radius: 8px;
-}
-
-.language {
-	font-size: 25px;
-	background-color: #e9d5a1;
-	padding-bottom: 10px;
-	padding-top: 80px;
-}
-
-header h1 {
-	font-size: 400%;
-	text-align: center;
-	font-weight: 600 !important;
-	color: #353239;
-	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-	margin: 0 auto 18px auto;
-	width: 100%;
-}
-
-.slider-image {
-	border: 5px solid #D7CAAA;
-}
-
-.slider-tab {
-	background-color: #D7CAAA;
-	height: 25px;
-}
-
-.slider-iconfiy {
-	margin-top: 10px;
-}
-
-.styles_typicalWrapper__1_Uvh::after {
-	cursor: none !important;
-	display: none;
-}
-
-#about {
-	background: #fff;
-	overflow: hidden;
-}
-
-#about h1 {
-	padding-top: 5%;
-	font: 18px/24px 'opensans-bold', sans-serif;
-	text-transform: uppercase;
-	letter-spacing: 3px;
-	color: black;
-	text-align: center;
-}
-
-.foto img {
-	display: block;
-	width: 100%;
-}
-
-.foto div {
-	background: #ffffff;
-	display: inline-block;
-	margin: 0 auto 5% auto;
-	padding: 10px 10px 5px;
-	text-align: center;
-	text-decoration: none;
-	-webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, .3);
-	-moz-box-shadow: 0 4px 6px rgba(0, 0, 0, .3);
-	box-shadow: 0 4px 6px rgba(0, 0, 0, .3);
-	-webkit-transition: all .20s linear;
-	-moz-transition: all .20s linear;
-	transition: all .20s linear;
-	z-index: 0;
-	position: relative;
-}
-
-.foto div:after {
-	color: #333;
-	font-size: 25px;
-	content: attr(title);
-	position: relative;
-	top: 15px;
-}
-
-.foto div:hover {
-	-webkit-transform: scale(1.01);
-	-moz-transform: scale(1.01);
-	transform: scale(1.01);
-	z-index: 10;
-	-webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, .7);
-	-moz-box-shadow: 0 10px 20px rgba(0, 0, 0, .7);
-	box-shadow: 0 10px 20px rgba(0, 0, 0, .7);
-}
-
-.project-title-settings {
-	margin-top: 5%;
-	font: 18px/24px 'opensans-bold', sans-serif;
-	text-transform: uppercase;
-	letter-spacing: 3px;
-	color: black;
-	text-align: center;
-}
-
-.polaroid img {
-	display: block;
-	max-width: 200px;
-}
-
-.polaroid span {
-	background: #ffffff;
-	display: inline-block;
-	margin: 55px 75px 30px;
-	padding: 15px 15px 30px;
-	text-align: center;
-	text-decoration: none;
-	-webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, .3);
-	-moz-box-shadow: 0 4px 6px rgba(0, 0, 0, .3);
-	box-shadow: 0 4px 6px rgba(0, 0, 0, .3);
-	-webkit-transition: all .20s linear;
-	-moz-transition: all .20s linear;
-	transition: all .20s linear;
-	z-index: 0;
-	position: relative;
-}
-
-.link-href {
-	color: black;
-}
-
-.wave {
-	font-size: 160%;
-}
-
-.font-trebuchet {
-	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-
-#preview {
-	width: 500px;
-	background-color: #ebeaf5;
-	padding: 15px;
-	position: relative;
-	margin-bottom: 15%;
-}
-
-.center {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-#resume {
-	background: #efe1bd;
-}
-
-.experience-icon {
-	font-size: 300%;
-	margin-top: 25%;
-	text-align: center;
-}
-
-.main-badge {
-	font-size: 13px !important;
-	text-align: left !important;
-	padding: 5px 8px 5px 8px !important;
-	vertical-align: baseline;
-	background-color: #AE944F !important;
-	color: white;
-	font-weight: lighter !important;
-	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
-
-.experience-badge {
-	font-size: 11px !important;
-	text-align: left !important;
-	padding: 5px 8px 5px 8px !important;
-	vertical-align: baseline;
-	background-color: #f9f5e9 !important;
-	color: black;
-	font-weight: lighter !important;
-	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
-
-.vertical-timeline-element-date {
-	padding: 0 !important;
-	margin: 0 !important;
-}
-
-@media only screen and (max-width: 1170px) {
-	.experience-icon {
-		font-size: 170%;
-		margin-top: 27%;
-		text-align: center;
-	}
-}
-
-.modal-inside .modal-content {
-	background: white;
-}
-
-.bars {
-	width: 95%;
-	float: left;
-	padding: 0;
-	text-align: left;
-}
-
-.bars .skills {
-	margin-top: 36px;
-	list-style: none;
-}
-
-.bars li {
-	position: relative;
-	margin-bottom: 60px;
-	background: #ccc;
-	height: 42px;
-	border-radius: 3px;
-}
-
-.bars li em {
-	font: 15px 'opensans-bold', sans-serif;
-	color: #313131;
-	text-transform: uppercase;
-	letter-spacing: 2px;
-	font-weight: normal;
-	position: relative;
-	top: -36px;
-}
-
-.bar-expand {
-	position: absolute;
-	left: 0;
-	top: 0;
-	margin: 0;
-	padding-right: 24px;
-	background: #313131;
-	display: inline-block;
-	height: 42px;
-	line-height: 42px;
-	border-radius: 3px 0 0 3px;
-}
-
-.modal-close {
-	text-align: right;
-	padding: 10px 15px 10px 15px;
-	cursor: pointer;
-}
-
-.close-icon {
-	color: black;
-	font-weight: lighter !important;
-}
-
-.modal-description {
-	text-align: justify;
-	padding: 5px 5px 0 5px;
-	margin-bottom: 20px;
-	font-size: 12px;
-}
-
-.awssld__next {
-	outline: none !important;
-}
-
-.awssld__prev {
-	outline: none !important;
-}
-
-.loader-bar-color {
-	color: black !important;
-}
-
-#portfolio {
-	background: #efe1bd;
-	padding-bottom: 5%;
-}
-
-.portfolio-item {
-	max-width: 100%;
-	margin-bottom: 15px;
-	text-align: center;
-}
-
-.portfolio .portfolio-item .portfolio-item-caption {
-	-webkit-transition: all ease 0.5s;
-	-moz-transition: all ease 0.5s;
-	transition: all ease 0.5s;
-	opacity: 0;
-	background-color: rgba(51, 51, 51, 0.9);
-}
-
-.portfolio .portfolio-item .portfolio-item-caption:hover {
-	opacity: 1;
-}
-
-.portfolio .portfolio-item .portfolio-item-caption .portfolio-item-caption-content {
-	font-size: 1.5rem;
-}
-
-@media (min-width: 576px) {
-	.portfolio .closeButtonResponsive {
-		display: block;
-	}
-	.portfolio .portfolio-item {
-		margin-bottom: 30px;
-	}
-}
-
-#skills {
-	background: #1F1F1F;
-	min-height: 200px;
-	width: 100%;
-	overflow: hidden;
-	padding-bottom: 10%;
-}
-
-.section-title {
-	padding-top: 5%;
-	padding-bottom: 5%;
-	font: 18px/24px 'opensans-bold', sans-serif;
-	text-transform: uppercase;
-	letter-spacing: 3px;
-	color: #fff;
-	text-align: center;
-}
-
-.skill-icon {
-	font-size: 180%;
-	color: white;
-	text-align: center;
-	position: relative;
-}
-
-footer {
-	background: #1F1F1F;
-	min-height: 100px;
-	width: 100%;
-	overflow: hidden;
-	font-size: 14px;
-	color: white;
-	position: relative;
-	text-align: center;
-}
-
-footer a,
-footer a:visited {
-	color: #fff;
-}
-
-footer a:hover,
-footer a:focus {
-	color: #fff;
-}
-
-.social-links {
-	margin-top: 50px;
-	font-size: 22px;
+@keyframes fadeSlideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

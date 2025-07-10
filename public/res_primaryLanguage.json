@@ -1,118 +1,127 @@
 {
-    "basic_info": {
-      "description_header": "Hi",
-      "description": "👋 I'm Davina Griss. Fictional person for preview purposes :) I'm working with newest front-end frameworks like Angular, React and Vue. What you are seeing now is portfolio template from Dorota1997. If you like this portfolio template, make sure to ⭐ the repository to make it more recognizable for other users. Thank you 💜",
-      "section_name": {
-        "about": "About me",
-        "projects": "Projects",
-        "skills": "Skills",
-        "experience": "Experience"
-      }
+  "basic_info": {
+    "description_header": "Hi, I'm M. A. Ghaffar.",
+    "description": "👋 Passionate and results-driven software developer with a strong foundation in programming, problem-solving, and adaptability to emerging technologies. A quick learner with an analytical mindset, eager to contribute to innovative solutions. Adept at working in fast-paced, agile environments and collaborating within cross-functional teams to deliver high-quality software solutions. Seeking an opportunity to leverage my skills and continue growing in a dynamic, technology-driven workplace.",
+    "section_name": {
+      "about": "Now Streaming: Ghaffar",
+      "projects": "Featured Projects",
+      "skills": "Dev Arsenal",
+      "experience": "Past Episodes"
+    }
+  },
+  "projects": [
+    {
+      "title": "Human Speech Emotion Recognition",
+      "startDate": "2024",
+      "description": "Built a deep learning model using TensorFlow and Keras, achieving 88% accuracy on the TESS dataset, with feature extraction via Librosa. Developed a Tkinter-based interface to visualize audio-emotion analysis, boosting user engagement by 40%.",
+      "image": ["images/portfolio/Human Speech Emotion Detection/images.png"],
+      "modalImage":["images/portfolio/Human Speech Emotion Detection/image-modal.png"],
+      "url": "",
+      "technologies": [
+        {
+          "class": "devicon-python-plain",
+          "name": "Python"
+        },
+        {   
+          "class": "devicon-tensorflow-plain",
+          "name": "TensorFlow"
+        },
+        {
+          "class": "devicon-keras-plain",
+          "name": "Keras"
+        },
+        {
+          "class": "",
+          "name": "LSTM"
+        },
+        {
+          "class": "",
+          "name": "Tkinter"
+        }
+      ]
     },
-    "projects": [
-      {
-        "title": "Animal Shelter",
-        "startDate": "2020",
-        "description": "The most expanded application I had opportunity to work with. I've learned many technologies and my code was reviewed by awesome curator. Application handles all adoption processess and allows to store all evidence on adopting animals from animal shelter.",
-        "images": [
-          "images/portfolio/animal-shelter/p1.jpg",
-          "images/portfolio/animal-shelter/p2.jpg"
-        ],
-        "url": "",
-        "technologies": [
-          {
-            "class": "devicon-angularjs-plain",
-            "name": "Angular"
-          },
-          {
-            "class": "devicon-typescript-plain",
-            "name": "TypeScript"
-          },
-          {
-            "class": "devicon-csharp-plain",
-            "name": "C#"
-          }
-        ]
-      },
-      {
-        "title": "Photography",
-        "startDate": "2018",
-        "description": "Personal project for study subject. I was responsible for testing photography application that optimizes images with popular algorithms used by graphic editors like Pixlr or Adobe Photoshop. I've earned A grade :)",
-        "images": [
-          "images/portfolio/photography/p1.jpg",
-          "images/portfolio/photography/p2.jpg"
-        ],
-        "url": "https://github.com",
-        "technologies": [
-          {
-            "class": "devicon-react-original",
-            "name": "React"
-          },
-          {
-            "class": "devicon-javascript-plain",
-            "name": "JavaScript"
-          }
-        ]
-      },
-      {
-        "title": "3D Object Viewer",
-        "startDate": "2015",
-        "description": "One of the first apps I was working on my internship. I had to develop front-end implementation for app that shows 3D models of known buildings. This was also my first project in Angular framework. I've learned a lot!",
-        "images": [
-          "images/portfolio/adventure/p1.jpg",
-          "images/portfolio/adventure/p2.jpg"
-        ],
-        "url": "https://github.com",
-        "technologies": [
-          {
-            "class": "devicon-angularjs-plain",
-            "name": "Angular"
-          },
-          {
-            "class": "devicon-typescript-plain",
-            "name": "TypeScript"
-          },
-          {
-            "class": "devicon-csharp-plain",
-            "name": "C#"
-          }
-        ]
-      }
-    ],
-    "experience": [
-      {
-        "company": "DefOpenSource",
-        "title": "Front-End Developer",
-        "years": "10.2019 - present",
-        "mainTech": [
-          "Angular 8/9/10"
-        ],
-        "technologies": [
-          "REST API",
-          "RxJS",
-          "JavaScript",
-          "Bootstrap",
-          "MDBootstrap",
-          "EF Core",
-          ".NET Core",
-          "SignalR",
-          "Angular Material"
-        ]
-      },
-      {
-        "company": "Serros Solutions",
-        "title": "Intern",
-        "years": "01.2018 - 09.2019",
-        "mainTech": [
-          "Angular 7/8"
-        ],
-        "technologies": [
-          "RxJS",
-          "Django",
-          "PHP",
-          "JavaScript",
-          "DHTMLX Gantt"
-        ]
-      }
-    ]
-  }
+    {
+      "title": "SNAPVISION: Real-Time Object Detection",
+      "startDate": "2023",
+      "description": "Developed a real-time object detection system using the TensorFlow Object Detection API, integrating a live webcam feed for accurate object classification.",
+      "image": ["images/portfolio/Snapvision/Image_Detection.png"],
+      "modalImage":["images/portfolio/Snapvision/Image_Detection_Modal1.png"],
+      "url": "",
+      "technologies": [
+        {
+          "class": "devicon-tensorflow-plain",
+          "name": "TensorFlow"
+        },
+        {
+          "class": "",
+          "name": "Computer Vision"
+        },
+        {
+          "class": "",
+          "name": "Machine Learning"
+        }
+      ]
+    },
+    {
+      "title": "Mail Notifier with Fingerprint Sensor",
+      "startDate": "2022",
+      "description": "Designed a mailbox security system with fingerprint-based access control and real-time email notifications using Arduino and Blynk.",
+      "images": ["images/portfolio/Mail Notifier/image.png"],
+      "modalImage":["images/portfolio/Mail Notifier/image_modal_view.png"],
+      "url": "",
+      "technologies": [
+        {
+          "class": "devicon-cplusplus-plain",
+          "name": "C++"
+        },
+        {
+          "class": "",
+          "name": "Arduino"
+        },
+        {
+          "class": "",
+          "name": "Blynk Cloud"
+        }
+      ]
+    },
+    {
+      "title": "Tank Shooter",
+      "startDate": "2021",
+      "description": "Created a tank shooter game in Unreal Engine with C++, featuring realistic physics, AI opponents, and optimized gameplay performance.",
+      "images": ["images/portfolio/Tank Shooter/image.png"],
+      "modalImage":["images/portfolio/Tank Shooter/image-modal-view.png"],
+      "url": "",
+      "technologies": [
+        {
+          "class": "devicon-cplusplus-plain",
+          "name": "C++"
+        },
+        {
+          "class": "devicon-unrealengine-plain",
+          "name": "Unreal Engine"
+        },
+        {
+          "class": "",
+          "name": "Game Development"
+        }
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "company": "SmartMieten Tech Pvt Ltd",
+      "title": "Software Engineer Trainee",
+      "years": "April 2023 – June 2023",
+      "tagline": "The Frontend Saga",
+      "technologies": [
+        "Python",
+        "Machine Learning",
+        "Predictive Modeling",
+        "Risk Assessment",
+        "Policy Pricing",
+        "Data Optimization"
+      ],
+      "description": "Led development of a scalable React UI for a streaming platform. Integrated with Node.js backend and implemented adaptive video player features."
+    }
+  ]
+}

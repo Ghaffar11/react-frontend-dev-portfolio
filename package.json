@@ -1,23 +1,26 @@
 {
   "name": "react-frontend-dev-portfolio",
-  "homepage": "https://dorota1997.github.io/react-frontend-dev-portfolio/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@iconify/icons-fa-solid": "^1.2.4",
+    "@iconify/icons-simple-icons": "^1.2.74",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "bootstrap": "^4.5.2",
     "jquery": "^3.5.1",
-    "react": "^16.13.1",
+    "react": "^18.3.1",
     "react-awesome-slider": "^4.1.0",
     "react-bootstrap": "^1.3.0",
-    "react-dom": "^16.13.1",
+    "react-dom": "^18.3.1",
     "react-ga": "^3.1.2",
     "react-scripts": "3.4.3",
-    "react-switch": "^5.0.1",
-    "react-typical": "^0.1.3",
-    "react-vertical-timeline-component": "^3.3.1"
+    "react-slick": "^0.30.3",
+    "react-switch": "^7.0.0",
+    "react-type-animation": "^3.2.0",
+    "react-vertical-timeline-component": "^3.3.1",
+    "slick-carousel": "^1.8.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -44,7 +47,7 @@
   },
   "devDependencies": {
     "@iconify/icons-logos": "^1.0.12",
-    "@iconify/react": "^1.1.3",
+    "@iconify/react": "^1.1.4",
     "gh-pages": "^3.1.0",
     "sass": "^1.42.1"
   }
